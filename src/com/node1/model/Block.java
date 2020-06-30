@@ -13,12 +13,14 @@ public class Block {
 	private String data;
 	private long timestamp;
 	private int nonce;
+	private int count;
 	
 	public Block(String data, String proviousHash) {
 		this.data=data;  //거래데이터를 제이슨화 시켜서 넣기
 		this.previousHash = proviousHash;  //이전해쉬
 		this.timestamp = new Date().getTime();  //시간
 		this.hash = calculateHash();   //이전해쉬와 시간과 넌스, 데이터를 합친 해쉬
+		this.count = 0;
 	}
 	public String calculateHash() {
 		String calculatehash = StringUtil.applySha256(
@@ -37,10 +39,10 @@ public class Block {
 			nonce ++;
 			hash = calculateHash();
 			
-			System.out.println("Hash #"+ nonce+" : "+ hash);
+			System.out.println("1번 노드의 Hash #"+ nonce+" : "+ hash);
 			
 		}
-		System.out.println("채굴 성공!!! : " + hash);
+		System.out.println("1번 노드 채굴 성공!!! : " + hash);
 	}
 	
 	}
