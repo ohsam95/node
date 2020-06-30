@@ -14,6 +14,7 @@ public class Block {
 	private long timestamp;
 	private int nonce;
 	private int count;
+	private int nodeNum;
 	
 	public Block(String data, String proviousHash) {
 		this.data=data;  //거래데이터를 제이슨화 시켜서 넣기
@@ -21,6 +22,7 @@ public class Block {
 		this.timestamp = new Date().getTime();  //시간
 		this.hash = calculateHash();   //이전해쉬와 시간과 넌스, 데이터를 합친 해쉬
 		this.count = 0;
+		this.nodeNum = 1;
 	}
 	public String calculateHash() {
 		String calculatehash = StringUtil.applySha256(

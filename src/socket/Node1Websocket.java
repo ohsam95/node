@@ -30,7 +30,7 @@ public class Node1Websocket {
 	@OnMessage
 	public String handleMessage(String message) {
 		// 채굴 과정
-		int difficulty = 1; // 난이도 설정
+		int difficulty = 2; // 난이도 설정
 	
 		//메시지 파싱
 		JsonParser jsonParser = new JsonParser();
@@ -46,7 +46,6 @@ public class Node1Websocket {
 
 		// 전체 블록을 출력
 		String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(block);
-		System.out.println("1번 노드 채굴성공");
 		System.out.println("블록체인 리스트 : ");
 		System.out.println(blockchainJson);
 
