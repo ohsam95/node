@@ -30,14 +30,16 @@ public class Node1Websocket {
 	@OnMessage
 	public String handleMessage(String message) {
 		// 채굴 과정
-		int difficulty = 2; // 난이도 설정
+//		int difficulty = 2; // 난이도 설정
+
 	
 		//메시지 파싱
 		JsonParser jsonParser = new JsonParser();
 		JsonObject jsonObject = (JsonObject) jsonParser.parse(message);
 		String hash = jsonObject.get("prvHash").toString();
 		String data = jsonObject.get("dataJson").toString();
-
+		int difficulty = Integer.parseInt(jsonObject.get("difficulty").toString()); // 난이도 설정
+		
 		//블록 생성 및 채굴 시작
 		Block block = new Block(data, hash);
 		System.out.println(i + "번 블록을 채굴합니다");
